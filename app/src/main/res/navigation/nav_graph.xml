@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dest_user_list">
+
+    <fragment
+        android:id="@+id/dest_user_list"
+        android:name="com.sakibeko.psman.user.list.UserListFragment"
+        android:label="@string/fragment_label_user_list"
+        tools:layout="@layout/fragment_user_list">
+        <action
+            android:id="@+id/action_list_to_detail"
+            app:destination="@id/dest_user_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_user_detail"
+        android:name="com.sakibeko.psman.user.detail.UserDetailFragment"
+        android:label="@string/fragment_label_user_edit"
+        tools:layout="@layout/fragment_user_detail">
+        <action
+            android:id="@+id/action_detail_to_list"
+            app:destination="@id/dest_user_list" />
+        <argument
+            android:name="userId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_trash_list"
+        android:name="com.sakibeko.psman.user.trash.TrashUsersFragment"
+        android:label="@string/fragment_label_user_trash"
+        tools:layout="@layout/fragment_user_trash" />
+
+</navigation>

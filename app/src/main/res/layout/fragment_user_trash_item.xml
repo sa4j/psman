@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright 2020 sakibeko
+-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.sakibeko.psman.user.data.User" />
+
+        <variable
+            name="viewModel"
+            type="com.sakibeko.psman.user.trash.TrashUsersViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="?attr/listPreferredItemPaddingStart"
+        android:paddingEnd="12dip">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_service_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{user.serviceName}"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
+                android:id="@+id/text_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{user.userName}"
+                android:textAppearance="?attr/textAppearanceListItemSecondary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_updated_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.displayUpdatedAt(user.updatedAt)}"
+            android:textAppearance="?attr/textAppearanceListItemSmall"
+            android:textColor="@color/gray" />
+    </LinearLayout>
+</layout>
