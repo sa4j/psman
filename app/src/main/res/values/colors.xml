@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright 2021 sakibeko
+-->
 <resources>
     <color name="purple_200">#BB86FC</color>
     <color name="purple_500">#6200EE</color>

@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+Copyright 2021 sakibeko
+-->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.PsMan" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
