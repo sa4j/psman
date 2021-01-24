@@ -2,11 +2,12 @@
 Copyright 2021 sakibeko
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@id/dest_user_list"
-        android:title="@string/fragment_label_user_list" />
+        android:icon="@drawable/ic_edit"
+        android:title="@string/title_user_management" />
     <item
         android:id="@id/dest_trash_list"
-        android:title="@string/fragment_label_user_trash" />
+        android:icon="@drawable/ic_trash"
+        android:title="@string/title_user_trash" />
 </menu>
