@@ -34,7 +34,6 @@ class PortalFragment : Fragment() {
             viewModel = mViewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        hideNavigationBar()
         return viewDataBinding.root
     }
 
@@ -42,16 +41,6 @@ class PortalFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupViewEvents(view)
-    }
-
-    /**
-     * ナビゲーションメニューを隠す
-     */
-    private fun hideNavigationBar() {
-        val flags = View.SYSTEM_UI_FLAG_FULLSCREEN or
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        activity?.window?.decorView?.systemUiVisibility = flags
     }
 
     /**
