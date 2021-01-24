@@ -14,7 +14,7 @@
     <string name="info_msg_signed">サインインに成功しました。</string>
     <string name="error_msg_retry_login">ログインからやり直してください。</string>
     <string name="error_msg_input_has_null">未入力の項目があります。</string>
-    <string name="error_msg_password_short">パスワードが8文字以上で入力してください。</string>
+    <string name="error_msg_password_short">8文字以上で入力してください。</string>
     <string name="error_msg_password_wrong">パスワードが間違っています。</string>
     <string name="error_msg_password_mismatch">パスワードが一致していません。</string>
 </resources>
