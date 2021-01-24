@@ -8,9 +8,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.sakibeko.psman.R
 import com.sakibeko.psman.databinding.FragmentPortalBinding
 import com.sakibeko.psman.user.UserEditActivity
 import com.sakibeko.psman.util.getViewModelFactory
@@ -55,6 +57,13 @@ class PortalFragment : Fragment() {
         mViewModel.mEventMessage.observe(viewLifecycleOwner, EventObserver {
             Snackbar.make(requireView(), it, Snackbar.LENGTH_SHORT).show()
         })
+        mViewModel.mHasSign.observe(viewLifecycleOwner) {
+            view.findViewById<TextView>(R.id.text_announce).text = if (it) {
+                requireContext().getString(R.string.label_please_login)
+            } else {
+                requireContext().getString(R.string.label_please_sign)
+            }
+        }
     }
 
 }
