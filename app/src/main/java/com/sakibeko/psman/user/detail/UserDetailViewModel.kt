@@ -8,14 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sakibeko.psman.R
 import com.sakibeko.psman.auth.Auth
+import com.sakibeko.psman.auth.CipherMachine
 import com.sakibeko.psman.user.data.User
 import com.sakibeko.psman.user.data.UserRepository
 import com.sakibeko.psman.util.view.ViewEvent
 import kotlinx.coroutines.launch
-import java.util.*
-import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.SecretKeySpec
 
 /**
  * ViewModel:ユーザ詳細
@@ -52,8 +49,9 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
 
         viewModelScope.launch {
             mUserRepository.getUser(userId).let { result ->
+                val keys = mAuth.getCipherKeys()
                 mPassword.value = try {
-                    decrypt(result.password)
+                    CipherMachine.decrypt(result.password, keys.first, keys.second)
                 } catch (e: IllegalStateException) {
                     mEventError.value = ViewEvent(R.string.error_msg_retry_login)
                     return@let
@@ -79,8 +77,9 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
             return
         }
 
+        val keys = mAuth.getCipherKeys()
         val encryptedPassword = try {
-            encrypt(password)
+            CipherMachine.encrypt(password, keys.first, keys.second)
         } catch (e: IllegalStateException) {
             mEventError.value = ViewEvent(R.string.error_msg_retry_login)
             return
@@ -94,39 +93,4 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
         }
     }
 
-    /**
-     * パスワードの暗号化
-     */
-    private fun encrypt(password: String): String {
-        val keys = mAuth.getCipherKeys()
-        val cipherKey = SecretKeySpec(keys.first, CIPHER_ALGORITHM)
-        val initVector = IvParameterSpec(keys.second)
-        val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
-        cipher.init(Cipher.ENCRYPT_MODE, cipherKey, initVector)
-        val result = cipher.doFinal(password.toByteArray())
-        return String(Base64.getEncoder().encode(result))
-    }
-
-    /**
-     * パスワードの復号化
-     */
-    private fun decrypt(password: String): String {
-        val keys = mAuth.getCipherKeys()
-        val cipherKey = SecretKeySpec(keys.first, CIPHER_ALGORITHM)
-        val initVector = IvParameterSpec(keys.second)
-        val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
-        cipher.init(Cipher.DECRYPT_MODE, cipherKey, initVector)
-        val result = Base64.getDecoder().decode(password.toByteArray())
-        return String(cipher.doFinal(result))
-    }
-
 }
-
-/** 暗号化アルゴリズム */
-private const val CIPHER_ALGORITHM = "AES"
-
-/** 暗号化モード */
-private const val CIPHER_MODE = "CBC"
-
-/** 暗号化パディング方式 */
-private const val CIPHER_PADDING = "PKCS5Padding"
