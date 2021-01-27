@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sakibeko.psman.R
 import com.sakibeko.psman.auth.Auth
-import com.sakibeko.psman.auth.CipherMachine
+import com.sakibeko.psman.auth.PasswordEncoder
 import com.sakibeko.psman.user.data.User
 import com.sakibeko.psman.user.data.UserRepository
 import com.sakibeko.psman.util.view.ViewEvent
@@ -51,7 +51,7 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
             mUserRepository.getUser(userId).let { result ->
                 val keys = mAuth.getCipherKeys()
                 mPassword.value = try {
-                    CipherMachine.decrypt(result.password, keys.first, keys.second)
+                    PasswordEncoder.decode(result.password, keys.first, keys.second)
                 } catch (e: IllegalStateException) {
                     mEventError.value = ViewEvent(R.string.error_msg_retry_login)
                     return@let
@@ -79,7 +79,7 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
 
         val keys = mAuth.getCipherKeys()
         val encryptedPassword = try {
-            CipherMachine.encrypt(password, keys.first, keys.second)
+            PasswordEncoder.encode(password, keys.first, keys.second)
         } catch (e: IllegalStateException) {
             mEventError.value = ViewEvent(R.string.error_msg_retry_login)
             return

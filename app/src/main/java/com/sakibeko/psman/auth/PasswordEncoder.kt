@@ -9,14 +9,14 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * パスワードの暗号機
+ * パスワードの変換（符号化・復号化）
  */
-class CipherMachine {
+class PasswordEncoder {
     companion object {
         /**
-         * パスワードの暗号化
+         * パスワードの符号化
          */
-        fun encrypt(password: String, key: ByteArray, iv: ByteArray): String {
+        fun encode(password: String, key: ByteArray, iv: ByteArray): String {
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
             val initVector = IvParameterSpec(iv)
             val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
@@ -28,7 +28,7 @@ class CipherMachine {
         /**
          * パスワードの復号化
          */
-        fun decrypt(password: String, key: ByteArray, iv: ByteArray): String {
+        fun decode(password: String, key: ByteArray, iv: ByteArray): String {
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
             val initVector = IvParameterSpec(iv)
             val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
