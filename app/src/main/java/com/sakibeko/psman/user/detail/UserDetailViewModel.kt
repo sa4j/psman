@@ -3,6 +3,7 @@
  */
 package com.sakibeko.psman.user.detail
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +12,7 @@ import com.sakibeko.psman.auth.Auth
 import com.sakibeko.psman.auth.PasswordEncoder
 import com.sakibeko.psman.user.data.User
 import com.sakibeko.psman.user.data.UserRepository
+import com.sakibeko.psman.util.TAG
 import com.sakibeko.psman.util.view.ViewEvent
 import kotlinx.coroutines.launch
 
@@ -53,6 +55,7 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
                 mPassword.value = try {
                     PasswordEncoder.decode(result.password, keys.first, keys.second)
                 } catch (e: IllegalStateException) {
+                    Log.w(TAG, "Failed to decode: ${e.message}")
                     mEventError.value = ViewEvent(R.string.error_msg_retry_login)
                     return@let
                 }
@@ -80,7 +83,8 @@ class UserDetailViewModel(private val mUserRepository: UserRepository, private v
         val keys = mAuth.getCipherKeys()
         val encryptedPassword = try {
             PasswordEncoder.encode(password, keys.first, keys.second)
-        } catch (e: IllegalStateException) {
+        } catch (e: Exception) {
+            Log.w(TAG, "Failed to encode: ${e.message}")
             mEventError.value = ViewEvent(R.string.error_msg_retry_login)
             return
         }
