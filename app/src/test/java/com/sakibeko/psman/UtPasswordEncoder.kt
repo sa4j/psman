@@ -1,3 +1,6 @@
+/*
+ * Copyright 2021 sakibeko
+ */
 package com.sakibeko.psman
 
 import com.sakibeko.psman.auth.PasswordEncoder
