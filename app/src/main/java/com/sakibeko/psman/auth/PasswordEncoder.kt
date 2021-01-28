@@ -17,6 +17,10 @@ class PasswordEncoder {
          * パスワードの符号化
          */
         fun encode(password: String, key: ByteArray, iv: ByteArray): String {
+            if (password == "") {
+                throw IllegalArgumentException("password must not be blank.")
+            }
+
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
             val initVector = IvParameterSpec(iv)
             val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
@@ -29,6 +33,10 @@ class PasswordEncoder {
          * パスワードの復号化
          */
         fun decode(password: String, key: ByteArray, iv: ByteArray): String {
+            if (password == "") {
+                throw IllegalArgumentException("password must not be blank.")
+            }
+
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
             val initVector = IvParameterSpec(iv)
             val cipher = Cipher.getInstance("$CIPHER_ALGORITHM/$CIPHER_MODE/$CIPHER_PADDING")
