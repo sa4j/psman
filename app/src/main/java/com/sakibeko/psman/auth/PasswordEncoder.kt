@@ -18,7 +18,7 @@ class PasswordEncoder {
          */
         fun encode(password: String, key: ByteArray, iv: ByteArray): String {
             if (password == "") {
-                throw IllegalArgumentException("password must not be blank.")
+                throw IllegalArgumentException("password must not be empty.")
             }
 
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
@@ -34,7 +34,7 @@ class PasswordEncoder {
          */
         fun decode(password: String, key: ByteArray, iv: ByteArray): String {
             if (password == "") {
-                throw IllegalArgumentException("password must not be blank.")
+                throw IllegalArgumentException("password must not be empty.")
             }
 
             val cipherKey = SecretKeySpec(key, CIPHER_ALGORITHM)
