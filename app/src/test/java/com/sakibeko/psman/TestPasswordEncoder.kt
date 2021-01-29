@@ -14,7 +14,7 @@ import javax.crypto.IllegalBlockSizeException
 /**
  * 単体試験 for PasswordEncoder
  */
-class UtPasswordEncoder {
+class TestPasswordEncoder {
 
     companion object {
         const val CORRECT_PASSWORD = "abcd1234"
