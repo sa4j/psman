@@ -34,7 +34,7 @@ class ViewModelFactory constructor(
             isAssignableFrom(TrashUsersViewModel::class.java) ->
                 TrashUsersViewModel(application.mUserRepository)
             isAssignableFrom(PortalViewModel::class.java) ->
-                PortalViewModel(application.mAuth)
+                PortalViewModel(application.applicationContext, application.mAuth)
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
