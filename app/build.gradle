@@ -74,8 +74,21 @@ dependencies {
     // design
     implementation "com.google.android.material:material:$ver_material"
 
-    // test
+    // Local unit tests
     testImplementation "junit:junit:$ver_junit"
+
+    // Android unit tests
+    androidTestImplementation "junit:junit:$ver_junit"
     androidTestImplementation "androidx.test.ext:junit:$ver_androidx_junit"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$ver_test_androidktx_runner"
+    androidTestImplementation "androidx.test:core-ktx:$ver_test_androidx_core"
+    androidTestImplementation "androidx.test:rules:$ver_androidx_junit"
+    androidTestImplementation "androidx.room:room-testing:$ver_room"
+    androidTestImplementation "androidx.arch.core:core-testing:$ver_test_arch"
+
     androidTestImplementation "androidx.test.espresso:espresso-core:$ver_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$ver_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$ver_espresso"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$ver_espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$ver_espresso"
 }

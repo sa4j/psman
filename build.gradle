@@ -54,7 +54,11 @@ ext {
     ver_arch_lifecycle = '2.3.0-rc01'
     ver_hilt_lifecycle = '1.0.0-alpha02'
 
+    // tests
     ver_androidx_junit = "1.1.2"
+    ver_test_arch = '2.1.0'
+    ver_test_androidktx_runner = '1.1.2'
+    ver_test_androidx_core = '1.3.0'
     ver_espresso = "3.3.0"
     ver_junit = "4.+"
 }
