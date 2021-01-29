@@ -22,6 +22,7 @@ Copyright 2021 sakibeko
         </activity>
         <activity
             android:name=".user.UserEditActivity"
+            android:exported="false"
             android:theme="@style/Theme.PsMan.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
     </application>
