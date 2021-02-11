@@ -85,6 +85,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$ver_androidx_junit"
     androidTestImplementation "androidx.room:room-testing:$ver_room"
     androidTestImplementation "androidx.arch.core:core-testing:$ver_test_arch"
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-reflect:$ver_kotlin"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:$ver_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$ver_espresso"
