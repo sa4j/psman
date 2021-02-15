@@ -188,9 +188,9 @@ class TestUserEditActivityMovingScreen {
      * パスワードの保存を試行する（一覧画面に遷移する）
      */
     private fun attemptSaveUser(
-        serviceName: String = TestUserListFragment.SERVICE_NAME_CORRECT,
-        userName: String = TestUserListFragment.USER_NAME_CORRECT,
-        password: String = TestUserListFragment.PASSWORD_CORRECT
+        serviceName: String = SERVICE_NAME_CORRECT,
+        userName: String = USER_NAME_CORRECT,
+        password: String = PASSWORD_CORRECT
     ) {
         onView(withId(R.id.edit_service_name)).perform(ViewActions.typeText(serviceName))
         onView(withId(R.id.edit_user_name)).perform(ViewActions.typeText(userName))
