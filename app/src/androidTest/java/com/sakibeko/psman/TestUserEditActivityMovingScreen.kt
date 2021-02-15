@@ -101,6 +101,8 @@ class TestUserEditActivityMovingScreen {
      */
     @Test
     fun moveToDetailAndSaveIncorrectly() {
+        loginIfNeeded()
+
         // 最初の画面: [一覧]
         onView(withText(R.string.fragment_label_user_list)).check(matches(isDisplayed()))
         // [一覧] -> [詳細]
@@ -172,6 +174,9 @@ class TestUserEditActivityMovingScreen {
         onView(withContentDescription(mActivity.getString(R.string.nav_app_bar_navigate_up_description)))
             .perform(click())
 
+    /**
+     * attemptSaveUserの実行にはログイン済みでなければならないため、必要であればログインする
+     */
     private fun loginIfNeeded() {
         val auth = (mActivity.application as MyApplication).mAuth
         val password = "password"
