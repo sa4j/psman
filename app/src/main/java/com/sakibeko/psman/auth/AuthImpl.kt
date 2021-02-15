@@ -73,7 +73,7 @@ class AuthImpl(mContext: Context) : Auth {
      */
     override fun getCipherKeys(): Pair<ByteArray, ByteArray> {
         if (mDigest.length < DIGEST_SIZE) {
-            throw IllegalStateException("User is not signed.")
+            throw IllegalStateException("User is not logged in.")
         }
 
         // 数字に特別な意図はない
