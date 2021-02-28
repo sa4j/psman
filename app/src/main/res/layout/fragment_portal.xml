@@ -42,7 +42,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_sign_key1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/button_hint_password"
+                    android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:text="@={viewModel.mSignKey1}" />
@@ -58,7 +58,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_sign_key2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/button_hint_password_for_confirm"
+                    android:hint="@string/hint_password_for_confirm"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:text="@={viewModel.mSignKey2}" />
@@ -74,7 +74,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_login_key"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/button_hint_password"
+                    android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:text="@={viewModel.mLoginKey}" />

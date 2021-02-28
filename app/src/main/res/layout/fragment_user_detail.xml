@@ -30,7 +30,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_service_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/button_hint_service_name"
+                    android:hint="@string/hint_service_name"
                     android:singleLine="true"
                     android:text="@={viewModel.mServiceName}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +44,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/button_hint_user_name"
+                    android:hint="@string/hint_user_name"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:text="@={viewModel.mUserName}" />
@@ -60,7 +60,7 @@ Copyright 2021 sakibeko
                     android:id="@+id/edit_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/button_hint_password"
+                    android:hint="@string/hint_password"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:text="@={viewModel.mPassword}" />
